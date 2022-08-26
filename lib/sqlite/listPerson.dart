@@ -37,7 +37,12 @@ class _ListPersonState extends State<ListPerson>{
         actions: [
           IconButton(onPressed: (){
             Navigator.push(context,
-              MaterialPageRoute(builder:(context) => AddPerson()));
+              MaterialPageRoute(builder:(context) => AddPerson()))
+              .then((person) => {
+                setState((){
+                  persons.add(person);
+                })
+              });
           },
           icon: const Icon(Icons.add),
           )
@@ -56,7 +61,7 @@ class _ListPersonState extends State<ListPerson>{
           borderRadius: BorderRadius.circular(5.0)
         ),
         child: ListTile(
-          leading: Text(p.id!.toString()),
+          leading: Text(p.id != null ? p.id.toString() : "-1"),
           title: Text(p.firstName),
           subtitle: Text(p.lastName),
         ),
