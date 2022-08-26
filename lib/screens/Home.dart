@@ -1,5 +1,3 @@
-
-
 import 'package:all_persistence_types/utils/customWidgets.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +17,9 @@ class Home extends StatelessWidget {
             title: const Text("SQLite"),
             subtitle: const Text("List de Pessoas"),
             trailing: const Icon(Icons.navigate_next),
-            //onTap: ,
+            onTap: (){
+              Navigator.pushNamed(context, "/person");
+            },
           ),
           divisorListMain(),
         ]
