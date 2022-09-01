@@ -22,6 +22,16 @@ class Home extends StatelessWidget {
             },
           ),
           divisorListMain(),
+          ListTile(
+            leading: buildSvgIcon("images/db.svg"),
+            title: const Text("Floor"),
+            subtitle: const Text("List de Pessoas"),
+            trailing: const Icon(Icons.navigate_next),
+            onTap: (){
+              Navigator.pushNamed(context, "/person");
+            },
+          ),
+          divisorListMain(),
         ]
       ),
     );

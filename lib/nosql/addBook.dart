@@ -1,21 +1,21 @@
+import 'package:all_persistence_types/nosql/models/Book.dart';
 import 'package:flutter/material.dart';
 
-import 'models/Person.dart';
 
-class AddPerson extends StatelessWidget {
-  AddPerson({Key? key}) : super(key: key);
+class AddBook extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _authorController = TextEditingController();
+
+  AddBook({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Nova pessoa"),
+        title: Text("Novo livro"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,33 +27,26 @@ class AddPerson extends StatelessWidget {
               children: <Widget>[
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Nome", labelText: "Nome"),
-                  controller: _firstNameController,
+                      hintText: "Nome",
+                      labelText: "Nome"
+                  ),
+                  controller: _nameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Insira o nome da pessoa';
+                      return 'Insira o nome do livro';
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Sobrenome", labelText: "Sobrenome"),
-                  controller: _lastNameController,
+                      hintText: "Autor",
+                      labelText: "Autor"
+                  ),
+                  controller: _authorController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Insira o sobrenome da pessoa';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "Endereço", labelText: "Endereço"),
-                  controller: _addressController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Insira o endereço da pessoa';
+                      return 'Insira o autor do livro';
                     }
                     return null;
                   },
@@ -63,9 +56,11 @@ class AddPerson extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Person person = Person(null, _firstNameController.text,
-                            _lastNameController.text, _addressController.text);
-                        Navigator.pop(context, person);
+                        Book book = Book(
+                            name: _nameController.text,
+                            author: _authorController.text,
+                        );
+                        Navigator.pop(context, book);
                       }
                     },
                     child: const Text('Salvar'),
@@ -78,4 +73,5 @@ class AddPerson extends StatelessWidget {
       ),
     );
   }
+
 }
