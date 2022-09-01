@@ -32,4 +32,15 @@ class PersonDAO {
 
     return result;
   }
+
+  Future<int> insertPerson(Person person) async {
+    Database db = await getDatabase();
+    return db.insert('person', person.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future deletePersonById(int id) async {
+    Database db = await getDatabase();
+    return db.delete('person', where: ' id = ? ', whereArgs: [id]);
+  }
+
 }
