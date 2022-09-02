@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
           ListTile(
             leading: buildSvgIcon("images/sqlite-icon.svg"),
             title: const Text("SQLite"),
-            subtitle: const Text("List de Pessoas"),
+            subtitle: const Text("Lista de Pessoas"),
             trailing: const Icon(Icons.navigate_next),
             onTap: (){
               Navigator.pushNamed(context, "/person");
@@ -25,10 +25,20 @@ class Home extends StatelessWidget {
           ListTile(
             leading: buildSvgIcon("images/db.svg"),
             title: const Text("Floor"),
-            subtitle: const Text("List de Pessoas"),
+            subtitle: const Text("Lista de Livros"),
             trailing: const Icon(Icons.navigate_next),
             onTap: (){
-              Navigator.pushNamed(context, "/person");
+              Navigator.pushNamed(context, "/book");
+            },
+          ),
+          divisorListMain(),
+          ListTile(
+            leading: buildSvgIcon("images/firebase-icon.svg"),
+            title: const Text("Firebase Cloud Firestore"),
+            subtitle: const Text("Lista de Carros"),
+            trailing: const Icon(Icons.navigate_next),
+            onTap: (){
+              Navigator.pushNamed(context, "/car");
             },
           ),
           divisorListMain(),

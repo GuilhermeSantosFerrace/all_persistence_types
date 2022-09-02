@@ -8,7 +8,7 @@ import 'models/Book.dart';
 class ListBook extends StatefulWidget {
   const ListBook({Key? key}) : super(key: key);
   
-  final Text title = const Text("Livro");
+  final Text title = const Text("Livros");
 
   @override
   _ListBookState createState() => _ListBookState();
@@ -70,7 +70,7 @@ class _ListBookState extends State<ListBook>{
             Navigator.push(context,
               MaterialPageRoute(builder:(context) => AddBook()))
               .then((book) => {
-                // insertBook(book)
+                insertBook(book)
               });
           },
           icon: const Icon(Icons.add),
@@ -96,10 +96,10 @@ class _ListBookState extends State<ListBook>{
         ),
         child: ListTile(
           leading: Text(p.id != null ? p.id.toString() : "-1"),
-          // title: Text(p.firstName),
-          // subtitle: Text(p.lastName),
+          title: Text(p.name),
+          subtitle: Text(p.author),
           onLongPress: (){
-            // deleteBook(index);
+            deleteBook(index);
           },
         ),
       ),
